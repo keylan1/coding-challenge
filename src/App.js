@@ -2,6 +2,36 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import './App.css';
 
+const euArr = [
+  'BE',
+  'BG',
+  'CZ',
+  'DK',
+  'DE',
+  'EE',
+  'IE',
+  'EL',
+  'ES',
+  'FR',
+  'HR',
+  'IT',
+  'CY',
+  'LV',
+  'LT',
+  'LU',
+  'HU',
+  'MT',
+  'NL',
+  'AT',
+  'PL',
+  'PT',
+  'RO',
+  'SI',
+  'SK',
+  'FI',
+  'SE',
+];
+
 function App() {
   const [courses, setCourses] = useState([]);
 
@@ -20,8 +50,23 @@ function App() {
       });
   };
 
+  const fetchLocation = () => {
+    fetch('https://freeipapi.com/api/json')
+      .then((res) => res.json())
+      .then((data) => {
+        return {
+          country: data.countryName,
+          countryCode: data.countryCode,
+        };
+      });
+  };
+
   useEffect(() => {
     fetchCourses();
+  }, []);
+
+  useEffect(() => {
+    fetchLocation();
   }, []);
 
   return (
@@ -29,6 +74,7 @@ function App() {
       <button onClick={fetchCourses}>Generate cat fact</button>
       <>
         {courses.map((course, index) => (
+          // when list has no unique id, use key={index}
           <div key={index}>
             <p>{course.title}</p>
             <p>{course.url}</p>
