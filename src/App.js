@@ -34,6 +34,7 @@ const euArr = [
 
 function App() {
   const [courses, setCourses] = useState([]);
+  const [location, setLocation] = useState([]);
 
   const fetchCourses = () => {
     fetch('https://private-e05942-courses22.apiary-mock.com/courses')
@@ -54,10 +55,11 @@ function App() {
     fetch('https://freeipapi.com/api/json')
       .then((res) => res.json())
       .then((data) => {
-        return {
+        const ipData = {
           country: data.countryName,
           countryCode: data.countryCode,
         };
+        setLocation(ipData);
       });
   };
 
