@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import './App.css';
+import { Button, Nav } from 'react-bootstrap';
+import NavBar from './components/navbar.jsx';
+import './App.scss';
+import { BrowserRouter } from 'react-router-dom';
 
 const euArr = [
   'BE',
@@ -60,6 +63,7 @@ function App() {
           countryCode: data.countryCode,
         };
         setLocation(ipData);
+        console.log(ipData);
       });
   };
 
@@ -73,17 +77,20 @@ function App() {
 
   return (
     <div className="App">
-      <button onClick={fetchCourses}>Generate cat fact</button>
-      <>
-        {courses.map((course, index) => (
-          // when list has no unique id, use key={index}
-          <div key={index}>
-            <p>{course.title}</p>
-            <p>{course.url}</p>
-            <p>{course.startDate}</p>
-          </div>
-        ))}
-      </>
+      <BrowserRouter>
+        <NavBar />
+        <Button onClick={fetchCourses}>Display Available Courses</Button>
+        <>
+          {courses.map((course, index) => (
+            // when list has no unique id, use key={index}
+            <div key={index}>
+              <p>{course.title}</p>
+              <p>{course.url}</p>
+              <p>{course.startDate}</p>
+            </div>
+          ))}
+        </>
+      </BrowserRouter>
     </div>
   );
 }
