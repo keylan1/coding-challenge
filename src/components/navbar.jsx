@@ -1,16 +1,15 @@
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
+//import { Link } from 'react-router-dom';
 import './nav-bar.scss';
 
 function NavBar() {
   return (
     <div>
-      <Navbar className="fixed-top" data-bs-theme="dark" expand="lg">
+      <Navbar className="custom-nav" fixed="top" expand="lg">
         <Container>
-          <Nav.Link as={Link} to="/">
-            Home
-          </Nav.Link>
+          <Nav className="me-auto">
+            <Nav.Link href="#home">Home</Nav.Link>
+          </Nav>
         </Container>
       </Navbar>
     </div>
