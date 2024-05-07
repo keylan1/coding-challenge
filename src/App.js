@@ -37,6 +37,7 @@ const euArr = [
 
 function App() {
   const [courses, setCourses] = useState([]);
+  const [showCourses, setShowCourses] = useState(false);
   const [location, setLocation] = useState([]);
 
   const fetchCourses = () => {
@@ -75,23 +76,27 @@ function App() {
     fetchLocation();
   }, []);
 
+  const displayCourses = () => {
+    return courses.map((course) => (
+      // when list has no unique id, use key={index}
+      <div key={course.id}>
+        <p>{course.title}</p>
+        <p>{course.url}</p>
+        <p>{course.startDate}</p>
+      </div>
+    ));
+  };
+
   return (
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <Button className="btn-style" onClick={fetchCourses}>
+        <Button
+          className="btn-style"
+          onClick={() => setShowCourses(!showCourses)}>
           Display Available Courses
         </Button>
-        <>
-          {courses.map((course, index) => (
-            // when list has no unique id, use key={index}
-            <div key={index}>
-              <p>{course.title}</p>
-              <p>{course.url}</p>
-              <p>{course.startDate}</p>
-            </div>
-          ))}
-        </>
+        <>{showCourses && displayCourses()}</>
       </BrowserRouter>
     </div>
   );
