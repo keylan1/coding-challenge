@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Button, Nav } from 'react-bootstrap';
-import NavBar from './components/navbar.jsx';
+import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -79,7 +79,9 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <NavBar />
-        <Button onClick={fetchCourses}>Display Available Courses</Button>
+        <Button className="btn-style" onClick={fetchCourses}>
+          Display Available Courses
+        </Button>
         <>
           {courses.map((course, index) => (
             // when list has no unique id, use key={index}
