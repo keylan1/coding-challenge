@@ -40,3 +40,14 @@
 .btn-style {
   margin-top: 100px;
 }
+
+.btn-course {
+  display: flex;
+  align-content: center;
+}
+
+.courses {
+  display: flex;
+  flex-direction: row;
+  margin-top: 25px;
+}

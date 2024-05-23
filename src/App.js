@@ -79,10 +79,10 @@ function App() {
   const displayCourses = () => {
     return courses.map((course) => (
       // when list has no unique id, use key={index}
-      <div key={course.id}>
-        <p>{course.title}</p>
-        <p>{course.url}</p>
-        <p>{course.startDate}</p>
+      <div className="btn-course" key={course.id}>
+        <Button>{course.title}</Button>
+        {/*   <p>{course.url}</p>
+        <p>{course.startDate}</p> */}
       </div>
     ));
   };
@@ -96,7 +96,9 @@ function App() {
           onClick={() => setShowCourses(!showCourses)}>
           Display Available Courses
         </Button>
-        <>{showCourses && displayCourses()}</>
+        <div className="courses">
+          <>{showCourses && displayCourses()}</>
+        </div>
       </BrowserRouter>
     </div>
   );
