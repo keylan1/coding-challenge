@@ -43,11 +43,13 @@
 
 .btn-course {
   display: flex;
-  align-content: center;
+  justify-content: space-around;
+  margin: 0 auto;
 }
 
 .courses {
   display: flex;
   flex-direction: row;
   margin-top: 25px;
+  justify-content: center;
 }
