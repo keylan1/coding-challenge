@@ -38,18 +38,21 @@
 }
 
 .btn-style {
-  margin-top: 100px;
+  margin-top: 20vh;
 }
 
 .btn-course {
   display: flex;
-  justify-content: space-around;
   margin: 0 auto;
+}
+
+.btn-course-style {
+  background-color: rgb(150, 191, 255);
+  color: rgb(42, 41, 41);
 }
 
 .courses {
   display: flex;
   flex-direction: row;
-  margin-top: 25px;
-  justify-content: center;
+  margin-top: 10vh;
 }

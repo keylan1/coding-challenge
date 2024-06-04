@@ -80,7 +80,7 @@ function App() {
     return courses.map((course) => (
       // when list has no unique id, use key={index}
       <div className="btn-course" key={course.id}>
-        <Button>{course.title}</Button>
+        <Button className="btn-course-style">{course.title}</Button>
         {/*   <p>{course.url}</p>
         <p>{course.startDate}</p> */}
       </div>
