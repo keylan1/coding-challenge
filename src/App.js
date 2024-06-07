@@ -5,6 +5,7 @@ import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 
+//array to determine geolocation
 const euArr = [
   'BE',
   'BG',
