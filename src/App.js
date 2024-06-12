@@ -5,7 +5,7 @@ import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 
-//array to determine geolocation
+//array to determine currency based on geolocation
 const euArr = [
   'BE',
   'BG',
@@ -41,6 +41,8 @@ function App() {
   const [showCourses, setShowCourses] = useState(false);
   const [location, setLocation] = useState([]);
 
+  //fetch from api
+
   const fetchCourses = () => {
     fetch('https://private-e05942-courses22.apiary-mock.com/courses')
       .then((res) => res.json())
@@ -56,6 +58,7 @@ function App() {
       });
   };
 
+  //fetch geolocation from api
   const fetchLocation = () => {
     fetch('https://freeipapi.com/api/json')
       .then((res) => res.json())
