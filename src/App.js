@@ -5,7 +5,7 @@ import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
 import { BrowserRouter } from 'react-router-dom';
 
-//array to determine currency based on geolocation
+//array to determine currency based on geolocation, if/else statement in the specific course view?
 const euArr = [
   'BE',
   'BG',
