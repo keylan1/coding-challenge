@@ -3,7 +3,8 @@ import { useEffect } from 'react';
 import { Button, Nav } from 'react-bootstrap';
 import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import VoiceCourse from './components/courses/voice-course.jsx';
 
 //array to determine currency based on geolocation, if/else statement in the specific course view?
 const euArr = [
@@ -102,6 +103,7 @@ function App() {
         </Button>
         <div className="courses">
           <>{showCourses && displayCourses()}</>
+          <VoiceCourse setLocation={setLocation} />
         </div>
       </BrowserRouter>
     </div>
