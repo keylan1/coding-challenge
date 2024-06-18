@@ -1,9 +1,10 @@
+import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Button, Nav } from 'react-bootstrap';
 import NavBar from './components/nav/navbar.jsx';
 import './App.scss';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import VoiceCourse from './components/courses/voice-course.jsx';
 
 //array to determine currency based on geolocation, if/else statement in the specific course view?
@@ -41,6 +42,7 @@ function App() {
   const [courses, setCourses] = useState([]);
   const [showCourses, setShowCourses] = useState(false);
   const [location, setLocation] = useState([]);
+  const navigate = useNavigate();
 
   //fetch from api
 
@@ -81,10 +83,17 @@ function App() {
     fetchLocation();
   }, []);
 
+  const handleCourseClick = (courseId) => {
+    navigate(`/${courseId}`);
+  };
+
   const displayCourses = () => {
     return courses.map((course) => (
       // when list has no unique id, use key={index}
-      <div className="btn-course" key={course.id}>
+      <div
+        className="btn-course"
+        key={course.id}
+        onClick={() => handleCourseClick(course.id)}>
         <Button className="btn-course-style">{course.title}</Button>
         {/*   <p>{course.url}</p>
         <p>{course.startDate}</p> */}
@@ -94,18 +103,19 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <NavBar />
-        <Button
-          className="btn-style"
-          onClick={() => setShowCourses(!showCourses)}>
-          Display Available Courses
-        </Button>
-        <div className="courses">
-          <>{showCourses && displayCourses()}</>
-          <VoiceCourse setLocation={setLocation} />
-        </div>
-      </BrowserRouter>
+      <NavBar />
+
+      <Button
+        className="btn-style"
+        onClick={() => setShowCourses(!showCourses)}>
+        Display Available Courses
+      </Button>
+      <div className="courses">
+        <>{showCourses && displayCourses()}</>
+      </div>
+      <Routes>
+        <Route path="/courseId" element={<VoiceCourse />} />
+      </Routes>
     </div>
   );
 }
